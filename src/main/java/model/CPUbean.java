@@ -2,11 +2,12 @@ package model;
 
 import com.opencsv.bean.CsvBindByName;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class CPUbean {
 
-    public CPUbean(String architecture, String best_Resolution, String boost_Clock, String core_Speed, String DVI_Connection, String dedicated, String direct_X, Long displayPort_Connection, Long HDMI_Connection, String integrated, String l2_Cache, String manufacturer, String max_Power, String memory, String memory_Bandwidth, String memory_Bus, String memory_Speed, String memory_Type, String name, String notebook_GPU, String open_GL, String PSU, String pixel_Rate, String power_Connector, String process, Long ROPs, String release_Date, String release_Price, String resolution_WxH, String SLI_Crossfire, String shader, Long TMUs, String texture_Rate, String VGA_Connection) {
+    public CPUbean(String architecture, String best_Resolution, String boost_Clock, String core_Speed, String DVI_Connection, String dedicated, String direct_X, Long displayPort_Connection, Long HDMI_Connection, String integrated, String l2_Cache, String manufacturer, String max_Power, String memory, String memory_Bandwidth, String memory_Bus, String memory_Speed, String memory_Type, String name, String notebook_GPU, String open_GL, String PSU, String pixel_Rate, String power_Connector, String process, Long ROPs, LocalDate release_Date, String release_Price, String resolution_WxH, String SLI_Crossfire, String shader, Long TMUs, String texture_Rate, String VGA_Connection) {
         Architecture = architecture;
         Best_Resolution = best_Resolution;
         Boost_Clock = boost_Clock;
@@ -96,7 +97,7 @@ public class CPUbean {
     @CsvBindByName
     private Long ROPs;
     @CsvBindByName
-    private String Release_Date;
+    private LocalDate Release_Date;
     @CsvBindByName
     private String Release_Price;
     @CsvBindByName
@@ -321,11 +322,11 @@ public class CPUbean {
         this.ROPs = ROPs;
     }
 
-    public String getRelease_Date() {
+    public LocalDate getRelease_Date() {
         return Release_Date;
     }
 
-    public void String(String release_Date) {
+    public void setRelease_Date(LocalDate release_Date) {
         Release_Date = release_Date;
     }
 
