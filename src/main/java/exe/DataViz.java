@@ -17,7 +17,9 @@ public class DataViz {
 
     public static void main(String[] args) {
 
-        String data = "C:\\SOURCE CODE\\datavisualization\\src\\main\\resources\\All_GPUs.csv";
+//        String data = "C:\\SOURCE CODE\\datavisualization\\src\\main\\resources\\All_GPUs.csv";
+        String data = "/home/matko/IdeaProjects/CPUdataviz/src/main/resources/All_GPUs.csv";
+
         CSVReader reader = null;
         ArrayList<CPUbean> cpuList = new ArrayList<CPUbean>();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MMM-yyyy").withLocale(Locale.ENGLISH);
@@ -44,7 +46,7 @@ public class DataViz {
                     ));
                 }
         } catch (IOException e) {
-            System.out.println("IOExceptoion!");
+            e.printStackTrace();
         }
 
         for (CPUbean element : cpuList)
