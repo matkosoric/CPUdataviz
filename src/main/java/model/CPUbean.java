@@ -7,7 +7,14 @@ import java.util.Date;
 
 public class CPUbean {
 
-    public CPUbean(String architecture, Long best_Resolution1, Long best_Resolution2, Long boost_Clock, String core_Speed, String DVI_Connection, String dedicated, String direct_X, Long displayPort_Connection, Long HDMI_Connection, String integrated, String l2_Cache, String manufacturer, String max_Power, String memory, String memory_Bandwidth, String memory_Bus, String memory_Speed, String memory_Type, String name, String notebook_GPU, String open_GL, String PSU, String pixel_Rate, String power_Connector, String process, Long ROPs, LocalDate release_Date, String release_Price, String resolution_WxH, String SLI_Crossfire, String shader, Long TMUs, String texture_Rate, String VGA_Connection) {
+    public CPUbean(String architecture, Long best_Resolution1, Long best_Resolution2, Long boost_Clock,
+                   Long core_Speed, String DVI_Connection, String dedicated, String direct_X,
+                   Long displayPort_Connection, Long HDMI_Connection, String integrated, String l2_Cache,
+                   String manufacturer, Long max_Power, Long memory, String memory_Bandwidth,
+                   String memory_Bus, Long memory_Speed, String memory_Type, String name,
+                   String notebook_GPU, String open_GL, String PSU, String pixel_Rate, String power_Connector,
+                   String process, Long ROPs, LocalDate release_Date, String release_Price, String resolution_WxH,
+                   String SLI_Crossfire, String shader, Long TMUs, String texture_Rate, String VGA_Connection) {
         Architecture = architecture;
         Best_Resolution1 = best_Resolution1;
         Best_Resolution2 = best_Resolution2;
@@ -54,7 +61,7 @@ public class CPUbean {
     @CsvBindByName
     private Long Boost_Clock;
     @CsvBindByName
-    private String Core_Speed;
+    private Long Core_Speed;
     @CsvBindByName
     private String DVI_Connection;
     @CsvBindByName
@@ -72,15 +79,15 @@ public class CPUbean {
     @CsvBindByName
     private String Manufacturer;
     @CsvBindByName
-    private String Max_Power;
+    private Long Max_Power;
     @CsvBindByName
-    private String Memory;
+    private Long Memory;
     @CsvBindByName
     private String Memory_Bandwidth;
     @CsvBindByName
     private String Memory_Bus;
     @CsvBindByName
-    private String Memory_Speed;
+    private Long Memory_Speed;
     @CsvBindByName
     private String Memory_Type;
     @CsvBindByName
@@ -147,13 +154,9 @@ public class CPUbean {
         Boost_Clock = boost_Clock;
     }
 
-    public String getCore_Speed() {
-        return Core_Speed;
-    }
+    public Long getCore_Speed() { return Core_Speed; }
 
-    public void setCore_Speed(String core_Speed) {
-        Core_Speed = core_Speed;
-    }
+    public void setCore_Speed(Long core_Speed) { Core_Speed = core_Speed; }
 
     public String getDVI_Connection() {
         return DVI_Connection;
@@ -219,19 +222,19 @@ public class CPUbean {
         Manufacturer = manufacturer;
     }
 
-    public String getMax_Power() {
+    public Long getMax_Power() {
         return Max_Power;
     }
 
-    public void setMax_Power(String max_Power) {
+    public void setMax_Power(Long max_Power) {
         Max_Power = max_Power;
     }
 
-    public String getMemory() {
+    public Long getMemory() {
         return Memory;
     }
 
-    public void setMemory(String memory) {
+    public void setMemory(Long memory) {
         Memory = memory;
     }
 
@@ -251,11 +254,11 @@ public class CPUbean {
         Memory_Bus = memory_Bus;
     }
 
-    public String getMemory_Speed() {
+    public Long getMemory_Speed() {
         return Memory_Speed;
     }
 
-    public void setMemory_Speed(String memory_Speed) {
+    public void setMemory_Speed(Long memory_Speed) {
         Memory_Speed = memory_Speed;
     }
 

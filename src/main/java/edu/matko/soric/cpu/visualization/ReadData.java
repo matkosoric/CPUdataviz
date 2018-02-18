@@ -15,8 +15,6 @@ public class ReadData {
 
     public static List<CPUbean> readAllData () {
 
-
-
         // reading data set from a csv file and parsing elements to a bean
 
         //        String data = "C:\\SOURCE CODE\\datavisualization\\src\\main\\resources\\All_GPUs.csv";
@@ -36,16 +34,13 @@ public class ReadData {
                 Long bestResolution2 = 0L;
                 Long boostClock = 0L;
                 Long coreSpeed = 0L;
+                Long maxPower = 0L;
+                Long memory = 0L;
+                Long memory_speed = 0L;
+
 
                 // parsiranje stringova u numeričke vrijednosti
                 try {
-
-                    // inicijalizacija vrijednosti
-                    date = LocalDate.MIN;
-                    bestResolution1 = 0L;
-                    bestResolution2 = 0L;
-                    boostClock = 0L;
-                    coreSpeed = 0L;
 
                     // best resolution
                     if (line[1] != null && line[1].length() > 0) {
@@ -68,21 +63,41 @@ public class ReadData {
                         coreSpeed = Long.parseLong(line[3].substring(0, line[3].indexOf(" ")));
                     }
 
+                    // max power
+                    if (line[12] != null
+                            && (line[12].length()>2)
+                            && (!line[12].startsWith("\n"))) {
+                        maxPower = Long.parseLong(line[12].substring(0, line[12].indexOf(" ")));
+                    }
+
+                    // memory
+                    if (line[13] != null
+                            && line[13].length() > 1
+                            && !line[13].startsWith("\n")) {
+                        memory = Long.parseLong(line[13].substring(0, line[13].indexOf(" ")) );
+                    }
+
+                    // memory_speed
+                    if (line[16] != null
+                            && line[16].length() > 1
+                            && !line[16].startsWith("\n")) {
+                        memory_speed = Long.parseLong(line[16].substring(0, line[16].indexOf(" ")));
+                    }
+
 
                     // release date
                     if (line[26] != null && (!line[26].contains("Release") || !line[26].startsWith("\n"))) {
                         date = LocalDate.parse(line[26].substring(1, line[26].length() - 1).trim(), formatter);
                     }
 
-                    System.out.println(date + "   " + boostClock + "  :  " + "   "  + coreSpeed);
 
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
                 cpuList.add(new CPUbean(
-                        line[0], bestResolution1, bestResolution2, boostClock, line[3], line[4], line[5], line[6],
+                        line[0], bestResolution1, bestResolution2, boostClock, coreSpeed, line[4], line[5], line[6],
                         Long.getLong(line[7]), Long.getLong(line[8]), line[9], line[10],
-                        line[11], line[12], line[13], line[14], line[15], line[16],
+                        line[11], maxPower, memory, line[14], line[15], memory_speed,
                         line[17], line[18], line[19], line[20], line[21], line[22], line[23],
                         line[24], Long.getLong(line[25]), date,
                         line[27], line[28], line[29], line[30], Long.getLong(line[31]),
