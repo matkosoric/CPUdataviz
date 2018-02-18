@@ -7,9 +7,10 @@ import java.util.Date;
 
 public class CPUbean {
 
-    public CPUbean(String architecture, String best_Resolution, String boost_Clock, String core_Speed, String DVI_Connection, String dedicated, String direct_X, Long displayPort_Connection, Long HDMI_Connection, String integrated, String l2_Cache, String manufacturer, String max_Power, String memory, String memory_Bandwidth, String memory_Bus, String memory_Speed, String memory_Type, String name, String notebook_GPU, String open_GL, String PSU, String pixel_Rate, String power_Connector, String process, Long ROPs, LocalDate release_Date, String release_Price, String resolution_WxH, String SLI_Crossfire, String shader, Long TMUs, String texture_Rate, String VGA_Connection) {
+    public CPUbean(String architecture, Long best_Resolution1, Long best_Resolution2, Long boost_Clock, String core_Speed, String DVI_Connection, String dedicated, String direct_X, Long displayPort_Connection, Long HDMI_Connection, String integrated, String l2_Cache, String manufacturer, String max_Power, String memory, String memory_Bandwidth, String memory_Bus, String memory_Speed, String memory_Type, String name, String notebook_GPU, String open_GL, String PSU, String pixel_Rate, String power_Connector, String process, Long ROPs, LocalDate release_Date, String release_Price, String resolution_WxH, String SLI_Crossfire, String shader, Long TMUs, String texture_Rate, String VGA_Connection) {
         Architecture = architecture;
-        Best_Resolution = best_Resolution;
+        Best_Resolution1 = best_Resolution1;
+        Best_Resolution2 = best_Resolution2;
         Boost_Clock = boost_Clock;
         Core_Speed = core_Speed;
         this.DVI_Connection = DVI_Connection;
@@ -47,9 +48,11 @@ public class CPUbean {
     @CsvBindByName
     private String Architecture;
     @CsvBindByName
-    private String Best_Resolution;
+    private Long Best_Resolution1;
     @CsvBindByName
-    private String Boost_Clock;
+    private Long Best_Resolution2;
+    @CsvBindByName
+    private Long Boost_Clock;
     @CsvBindByName
     private String Core_Speed;
     @CsvBindByName
@@ -122,19 +125,25 @@ public class CPUbean {
         Architecture = architecture;
     }
 
-    public String getBest_Resolution() {
-        return Best_Resolution;
+    public Long getBest_Resolution1() {
+        return Best_Resolution1;
     }
 
-    public void setBest_Resolution(String best_Resolution) {
-        Best_Resolution = best_Resolution;
+    public void setBest_Resolution1(Long best_Resolution1) {
+        Best_Resolution1 = best_Resolution1;
     }
 
-    public String getBoost_Clock() {
+    public Long getBest_Resolution2() { return Best_Resolution2; }
+
+    public void setBest_Resolution2(Long best_Resolution2) {
+        Best_Resolution2 = best_Resolution2;
+    }
+
+    public Long getBoost_Clock() {
         return Boost_Clock;
     }
 
-    public void setBoost_Clock(String boost_Clock) {
+    public void setBoost_Clock(Long boost_Clock) {
         Boost_Clock = boost_Clock;
     }
 
