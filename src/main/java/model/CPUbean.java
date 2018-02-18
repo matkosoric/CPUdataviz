@@ -3,7 +3,6 @@ package model;
 import com.opencsv.bean.CsvBindByName;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 public class CPUbean {
 
@@ -13,7 +12,7 @@ public class CPUbean {
                    String manufacturer, Long max_Power, Long memory, String memory_Bandwidth,
                    String memory_Bus, Long memory_Speed, String memory_Type, String name,
                    String notebook_GPU, String open_GL, String PSU, String pixel_Rate, String power_Connector,
-                   String process, Long ROPs, LocalDate release_Date, String release_Price, String resolution_WxH,
+                   String process, String ROPs, LocalDate release_Date, String release_Price, String resolution_WxH,
                    String SLI_Crossfire, String shader, Long TMUs, String texture_Rate, String VGA_Connection) {
         Architecture = architecture;
         Best_Resolution1 = best_Resolution1;
@@ -105,7 +104,7 @@ public class CPUbean {
     @CsvBindByName
     private String Process;
     @CsvBindByName
-    private Long ROPs;
+    private String ROPs;
     @CsvBindByName
     private LocalDate Release_Date;
     @CsvBindByName
@@ -326,11 +325,11 @@ public class CPUbean {
         Process = process;
     }
 
-    public Long getROPs() {
+    public String getROPs() {
         return ROPs;
     }
 
-    public void setROPs(Long ROPs) {
+    public void setROPs(String ROPs) {
         this.ROPs = ROPs;
     }
 

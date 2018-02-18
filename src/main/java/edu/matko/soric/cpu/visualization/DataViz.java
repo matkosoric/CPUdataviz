@@ -13,11 +13,11 @@ public class DataViz {
         List<CPUbean> cpuList = ReadData.readAllData();
 
         // populating in-memory H2 database with a list
-//        try {
-//            Integer rowsAffected = Bean2database.addToDatabase(cpuList);
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            Integer rowsAffected = Bean2database.addToDatabase(cpuList);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
 
 
