@@ -34,16 +34,19 @@ public class ReadData {
                 Long bestResolution2 = 0L;
                 Long boostClock = 0L;
                 Long coreSpeed = 0L;
+                Long displayPortConnection = 0L;
+                Long hdmiConnection = 0L;
                 Long maxPower = 0L;
                 Long memory = 0L;
                 Long memory_speed = 0L;
+                Long tmu = 0L;
 
 
                 // parsiranje stringova u numeričke vrijednosti
                 try {
 
                     // best resolution
-                    if (line[1] != null && line[1].length() > 0) {
+                    if (line[1] != null && line[1].trim().length() > 0) {
                         bestResolution1 = Long.parseLong(line[1].substring(0, line[1].indexOf("x")-1));
                         bestResolution2 = Long.parseLong(line[1].substring((line[1].indexOf("x")+2), line[1].length()));
                     }
@@ -61,6 +64,19 @@ public class ReadData {
                             && line[3].length()>0
                             && !line[3].startsWith("\n")) {
                         coreSpeed = Long.parseLong(line[3].substring(0, line[3].indexOf(" ")));
+                    }
+
+                    // display port connection
+                    if (line[7] != null
+                            && line[7].length() > 0) {
+                        displayPortConnection = Long.parseLong(line[7]);
+                    }
+
+                    // hdmi connection
+                    if (line[8] != null
+                            && line[8].length() > 0
+                            && !line[8].startsWith("\n")) {
+                        hdmiConnection = Long.parseLong(line[8]);
                     }
 
                     // max power
@@ -84,22 +100,29 @@ public class ReadData {
                         memory_speed = Long.parseLong(line[16].substring(0, line[16].indexOf(" ")));
                     }
 
-
                     // release date
                     if (line[26] != null && (!line[26].contains("Release") || !line[26].startsWith("\n"))) {
                         date = LocalDate.parse(line[26].substring(1, line[26].length() - 1).trim(), formatter);
                     }
+
+                    // tmu
+                    if (line[31] != null
+                            && line[31].length() > 0
+                            && (!line[31].startsWith("\n"))) {
+                        tmu = Long.parseLong(line[31].trim());
+                    }
+
 
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
                 cpuList.add(new CPUbean(
                         line[0], bestResolution1, bestResolution2, boostClock, coreSpeed, line[4], line[5], line[6],
-                        Long.getLong(line[7]), Long.getLong(line[8]), line[9], line[10],
+                        displayPortConnection, hdmiConnection, line[9], line[10],
                         line[11], maxPower, memory, line[14], line[15], memory_speed,
                         line[17], line[18], line[19], line[20], line[21], line[22], line[23],
                         line[24], line[25], date,
-                        line[27], line[28], line[29], line[30], Long.getLong(line[31]),
+                        line[27], line[28], line[29], line[30], tmu,
                         line[32], line[33]
                 ));
             }
