@@ -17,8 +17,8 @@ public class ReadData {
 
         // reading data set from a csv file and parsing elements to a bean
 
-        //        String data = "C:\\SOURCE CODE\\datavisualization\\src\\main\\resources\\All_GPUs.csv";
-        String data = "/home/matko/IdeaProjects/CPUdataviz/src/main/resources/All_GPUs.csv";
+        String data = "E:\\Java projekti\\CPUdataviz\\src\\main\\resources\\All_GPUs.csv";
+        //        String data = "/home/matko/IdeaProjects/CPUdataviz/src/main/resources/All_GPUs.csv";
         CSVReader reader = null;
         ArrayList<CPUbean> cpuList = new ArrayList<CPUbean>();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MMM-yyyy").withLocale(Locale.ENGLISH);

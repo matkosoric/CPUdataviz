@@ -178,11 +178,11 @@ public class Bean2database {
             insertPreparedStatement.close();
 
             // print
-            selectPreparedStatement = dbConnection.prepareStatement(SelectQuery);
-            ResultSet rs = selectPreparedStatement.executeQuery();
-            while (rs.next()) {
-                System.out.println("Id " + rs.getInt("id") + " Release date: " + rs.getDate("Release_Date"));
-            }
+//            selectPreparedStatement = dbConnection.prepareStatement(SelectQuery);
+//            ResultSet rs = selectPreparedStatement.executeQuery();
+//            while (rs.next()) {
+//                System.out.println("Id " + rs.getInt("id") + " Release date: " + rs.getDate("Release_Date"));
+//            }
             selectPreparedStatement.close();
 
             dbConnection.commit();
