@@ -4,9 +4,9 @@ import com.opencsv.bean.CsvBindByName;
 
 import java.time.LocalDate;
 
-public class CPUbean {
+public class GPUbean {
 
-    public CPUbean(String architecture, Long best_Resolution1, Long best_Resolution2, Long boost_Clock,
+    public GPUbean(String architecture, Long best_Resolution1, Long best_Resolution2, Long boost_Clock,
                    Long core_Speed, String DVI_Connection, String dedicated, String direct_X,
                    Long displayPort_Connection, Long HDMI_Connection, String integrated, String l2_Cache,
                    String manufacturer, Long max_Power, Long memory, String memory_Bandwidth,

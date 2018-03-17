@@ -1,4 +1,4 @@
-package edu.matko.soric.cpu.visualization;
+package edu.matko.soric.gpu.visualization;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

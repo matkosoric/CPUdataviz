@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>GPU data visualisation with Spring Boot, H2 & D3</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h2>GPU </h2>
+
+<table border="1">
+    <tr>
+        <th>Id</th>
+        <th>Core Speed</th>
+        <th>Memory</th>
+        <th>Release date</th>
+    </tr>
+    <tr th:each = "element: ${gpuList}">
+        <td th:text="${element.id}"></td>
+        <td th:text="${element.core_Speed}"></td>
+        <td th:text="${element.memory}"></td>
+        <td th:text="${element.release_Date}"></td>
+    </tr>
+</table></body>
+
+</html>

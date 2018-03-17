@@ -1,7 +1,7 @@
-package edu.matko.soric.cpu.visualization;
+package edu.matko.soric.gpu.visualization;
 
 import com.opencsv.CSVReader;
-import model.CPUbean;
+import model.GPUbean;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -13,14 +13,14 @@ import java.util.Locale;
 
 public class ReadData {
 
-    public static List<CPUbean> readAllData () {
+    public static List<GPUbean> readAllData () {
 
         // reading data set from a csv file and parsing elements to a bean
 
         String data = "E:\\Java projekti\\CPUdataviz\\src\\main\\resources\\All_GPUs.csv";
         //        String data = "/home/matko/IdeaProjects/CPUdataviz/src/main/resources/All_GPUs.csv";
         CSVReader reader = null;
-        ArrayList<CPUbean> cpuList = new ArrayList<CPUbean>();
+        ArrayList<GPUbean> cpuList = new ArrayList<GPUbean>();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MMM-yyyy").withLocale(Locale.ENGLISH);
 
         try {
@@ -56,7 +56,6 @@ public class ReadData {
                             && line[2].length()>0
                             && !line[2].startsWith("\n")) {
                         boostClock = Long.parseLong(line[2].substring(0, line[2].indexOf(" ")));
-
                     }
 
                     // core speed
@@ -111,12 +110,10 @@ public class ReadData {
                             && (!line[31].startsWith("\n"))) {
                         tmu = Long.parseLong(line[31].trim());
                     }
-
-
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                cpuList.add(new CPUbean(
+                cpuList.add(new GPUbean(
                         line[0], bestResolution1, bestResolution2, boostClock, coreSpeed, line[4], line[5], line[6],
                         displayPortConnection, hdmiConnection, line[9], line[10],
                         line[11], maxPower, memory, line[14], line[15], memory_speed,
@@ -129,10 +126,7 @@ public class ReadData {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        System.out.println("Parsing complete!");
+//        System.out.println("Parsing complete!");
         return cpuList;
-
     }
-
 }
