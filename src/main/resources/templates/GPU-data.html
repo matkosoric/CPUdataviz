@@ -1,4 +1,5 @@
 <!DOCTYPE HTML>
+<script src="https://d3js.org/d3.v4.min.js"></script>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>GPU data visualisation with Spring Boot, H2 & D3</title>
@@ -7,19 +8,33 @@
 <body>
 <h2>GPU </h2>
 
-<table border="1">
-    <tr>
-        <th>Id</th>
-        <th>Core Speed</th>
-        <th>Memory</th>
-        <th>Release date</th>
-    </tr>
-    <tr th:each = "element: ${gpuList}">
-        <td th:text="${element.id}"></td>
-        <td th:text="${element.core_Speed}"></td>
-        <td th:text="${element.memory}"></td>
-        <td th:text="${element.release_Date}"></td>
-    </tr>
-</table></body>
 
+
+<!--<table border="1">-->
+    <!--<tr>-->
+        <!--<th>Id</th>-->
+        <!--<th>Core Speed</th>-->
+        <!--<th>Memory</th>-->
+        <!--<th>Release date</th>-->
+    <!--</tr>-->
+    <!--<tr th:each = "element: ${gpuList}">-->
+        <!--<td th:text="${element.id}"></td>-->
+        <!--<td th:text="${element.core_Speed}"></td>-->
+        <!--<td th:text="${element.memory}"></td>-->
+        <!--<td th:text="${element.release_Date}"></td>-->
+    <!--</tr>-->
+<!--</table>-->
+
+</body>
 </html>
+
+<script>
+    d3.json("/api/dto1", function(data) {
+    console.log(data);
+});
+</script>
+
+<!--
+<!DOCTYPE html>
+<svg width="960" height="500"></svg>
+<script src="../main.js"></script>-->

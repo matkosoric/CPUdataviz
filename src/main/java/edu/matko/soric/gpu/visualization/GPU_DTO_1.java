@@ -4,12 +4,10 @@ import java.time.LocalDate;
 
 public class GPU_DTO_1 {
 
-
     private Long Id;
     private Long Core_Speed;
     private Long Memory;
     private LocalDate Release_Date;
-
 
     public GPU_DTO_1 (Long pId, Long pCore_Speed, Long pMemory, LocalDate pRelease_Date) {
         Id = pId;
@@ -18,9 +16,7 @@ public class GPU_DTO_1 {
         Release_Date = pRelease_Date;
     }
 
-    public GPU_DTO_1 () {
-
-    }
+    public GPU_DTO_1 () {    }
 
     public Long getId() {
         return Id;
