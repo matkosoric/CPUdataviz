@@ -30,7 +30,7 @@ public class MainController {
 
         List<GPU_DTO_1> gpu_dto_1List = service.getDto1();
 
-        model.addAttribute("gpuList", gpu_dto_1List);
+//        model.addAttribute("gpuList", gpu_dto_1List);
         return "GPU-data";
     }
 

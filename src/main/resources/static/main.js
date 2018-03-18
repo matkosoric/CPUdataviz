@@ -5,7 +5,7 @@ var svg = d3.select("svg"),
     height = +svg.attr("height") - margin.top - margin.bottom,
     g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-var parseTime = d3.timeParse("%d-%b-%y");
+var parseTime = d3.timeParse("%Y-%m-%d");
 
 var x = d3.scaleTime()
     .rangeRound([0, width]);
@@ -14,24 +14,27 @@ var y = d3.scaleLinear()
     .rangeRound([height, 0]);
 
 var area = d3.area()
-    .x(function(d) { return x(d.date); })
-    .y1(function(d) { return y(d.close); });
+    .x(function(d) { return x(d.release_Date); })
+    .y1(function(d) { return y(d.memory); });
 
-d3.tsv("data.tsv", function(d) {
-  d.date = parseTime(d.date);
-  d.close = +d.close;
-  return d;
+d3.json("/api/dto1", function(data) {
+    console.log(data);
+  data.id =  +data.id;
+  data.core_Speed = +data.core_Speed;
+  data.memory = +data.memory;
+  data.release_Date = parseTime(data.release_Date);
+  return data;
 }, function(error, data) {
   if (error) throw error;
 
-  x.domain(d3.extent(data, function(d) { return d.date; }));
-  y.domain([0, d3.max(data, function(d) { return d.close; })]);
+  x.domain(d3.extent(data, function(d) { return data.release_Date; }));
+  y.domain([0, d3.max(data, function(d) { return data.core_Speed; })]);
   area.y0(y(0));
 
   g.append("path")
       .datum(data)
       .attr("fill", "steelblue")
-      .attr("d", area);
+      .attr("data", area);
 
   g.append("g")
       .attr("transform", "translate(0," + height + ")")
