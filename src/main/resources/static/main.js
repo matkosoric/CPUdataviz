@@ -1,52 +1,75 @@
+//Set margins and sizes
+var margin = {
+top: 20,
+bottom: 50,
+right: 30,
+left: 50
+};
 
-var svg = d3.select("svg"),
-    margin = {top: 20, right: 20, bottom: 30, left: 50},
-    width = +svg.attr("width") - margin.left - margin.right,
-    height = +svg.attr("height") - margin.top - margin.bottom,
-    g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+var width = 900 - margin.left - margin.right;
+var height = 500 - margin.top - margin.bottom;
+//Create date parser
+var ParseDate = d3.time.format("%Y-%m-%d").parse;
+//Create x and y scale to scale inputs
+var xScale = d3.time.scale().range([0, width]);
+var yScale = d3.scale.linear().range([height, 0]);
 
-var parseTime = d3.timeParse("%Y-%m-%d");
+//Create x and y axes
+var xAxis = d3.svg.axis().scale(xScale)
+.orient("bottom")
+.ticks(5 );
+var yAxis = d3.svg.axis().scale(yScale)
+.orient("left")
+.ticks(5);
 
-var x = d3.scaleTime()
-    .rangeRound([0, width]);
+//Create a line generator
+var valueline = d3.svg.line()
+.x(function(d){
+return xScale(d.release_Date);
+})
 
-var y = d3.scaleLinear()
-    .rangeRound([height, 0]);
+.y(function(d){
+return yScale(d.core_Speed);
+});
+//Create an SVG element and append it to the DOM
+var svgElement = d3.select("body").append("svg")
+.attr({"width": width+margin.left+margin.right, "height": height+margin.top+margin.bottom})
+.append("g")
+.attr("transform","translate("+margin.left+","+margin.top+")");
+//Read TSV file
 
-var area = d3.area()
-    .x(function(d) { return x(d.release_Date); })
-    .y1(function(d) { return y(d.memory); });
+d3.json('/api/dto1', function(data) {
+//d3.tsv("http://simplysanad.com/d3js/data.tsv", function(data){
+//Parse Data into useable format
+data.forEach(function(d){
+d.release_Date = ParseDate(d.release_Date);
+d.core_Speed = +d.core_Speed;
+//the + sign converts string automagically to number
+});
 
-d3.json("/api/dto1", function(data) {
-    console.log(data);
-  data.id =  +data.id;
-  data.core_Speed = +data.core_Speed;
-  data.memory = +data.memory;
-  data.release_Date = parseTime(data.release_Date);
-  return data;
-}, function(error, data) {
-  if (error) throw error;
+//Set the domains of our scales
+xScale.domain(d3.extent(data, function(d){ return d.release_Date; }));
+yScale.domain([0, d3.max(data, function(d){ return d.core_Speed; })]);
 
-  x.domain(d3.extent(data, function(d) { return data.release_Date; }));
-  y.domain([0, d3.max(data, function(d) { return data.core_Speed; })]);
-  area.y0(y(0));
+//append the svg path
+var path = svgElement.append("path")
+.attr("d", valueline(data));
 
-  g.append("path")
-      .datum(data)
-      .attr("fill", "steelblue")
-      .attr("data", area);
+//Add X Axis
+var x = svgElement.append("g")
+.attr("transform", "translate(0,"+height+")")
+.call(xAxis);
 
-  g.append("g")
-      .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(x));
+//Add Y Axis
+var y = svgElement.append("g")
+.call(yAxis);
 
-  g.append("g")
-      .call(d3.axisLeft(y))
-    .append("text")
-      .attr("fill", "#000")
-      .attr("transform", "rotate(-90)")
-      .attr("y", 6)
-      .attr("dy", "0.71em")
-      .attr("text-anchor", "end")
-      .text("Price ($)");
+//Add label to y axis
+y.append("text")
+.attr("fill", "#000")
+.attr("transform", "rotate(-90)")
+.attr("y", 6)
+.attr("dy", "0.71em")
+.attr("text-anchor", "end")
+.text("Core speed");
 });
