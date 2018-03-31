@@ -24,9 +24,9 @@ return xScale(d.release_Date);
 })
 
 .y(function(d){
-return yScale(d.core_Speed);
+return yScale(d.memory);
 });
-var svgElement = d3.select("#graph1").append("svg")
+var svgElement = d3.select("#graph2").append("svg")
 .attr({"width": width+margin.left+margin.right, "height": height+margin.top+margin.bottom})
 .append("g")
 .attr("transform","translate("+margin.left+","+margin.top+")");
@@ -34,11 +34,11 @@ var svgElement = d3.select("#graph1").append("svg")
 d3.json('/api/dto1', function(data) {
 data.forEach(function(d){
 d.release_Date = ParseDate(d.release_Date);
-d.core_Speed = +d.core_Speed;
+d.memory = +d.memory;
 });
 
 xScale.domain(d3.extent(data, function(d){ return d.release_Date; }));
-yScale.domain([0, d3.max(data, function(d){ return d.core_Speed; })]);
+yScale.domain([0, d3.max(data, function(d){ return d.memory; })]);
 
 var path = svgElement.append("path")
 .attr("d", valueline(data));
@@ -56,5 +56,5 @@ y.append("text")
 .attr("y", 6)
 .attr("dy", "0.71em")
 .attr("text-anchor", "end")
-.text("Core speed");
+.text("Memory");
 });

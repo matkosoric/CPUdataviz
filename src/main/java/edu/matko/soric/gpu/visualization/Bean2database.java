@@ -192,8 +192,8 @@ public class Bean2database {
 
         try (
                 Connection dbConnection = DriverManager.getConnection(DB_CONNECTION, DB_USER, DB_PASSWORD);
-                PreparedStatement selectPreparedStatement = dbConnection.prepareStatement("SELECT * FROM gpuinfo WHERE Core_Speed > 0 ORDER BY Release_Date");
-                ResultSet resultSet = selectPreparedStatement.executeQuery();
+                PreparedStatement selectPreparedStatement = dbConnection.prepareStatement("SELECT * FROM gpuinfo WHERE Core_Speed > 0 AND Release_Date < '3000-01-01' ORDER BY Release_Date");
+                ResultSet resultSet = selectPreparedStatement.executeQuery()
         ) {
             while (resultSet.next()) {
                 GPU_DTO_1 gpuDTO = new GPU_DTO_1();

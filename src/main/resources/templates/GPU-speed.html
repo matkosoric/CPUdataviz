@@ -1,6 +1,5 @@
-    <!DOCTYPE HTML>
+<!DOCTYPE HTML>
 <script src="https://d3js.org/d3.v3.min.js"></script>
-<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>GPU data visualisation with Spring Boot, H2 & D3</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -17,14 +16,20 @@ stroke-width: 2;
 fill: none;
 stroke: grey;
 stroke-width: 1;
-shape-rendering: crispEdges;
+shape-rendering: geometricPrecision;
 }
 	</style>
 </head>
+<html>
 <body>
-<h2>GPU </h2>
+
+<h2>GPU speed through time </h2>
+<div id="graph1"></div>
+
+<br>
+<br>
+<a href="http://localhost:8080/GPU-memory">See GPU memory through time</a>
+
 </body>
 </html>
 <script type="text/javascript" src="main.js"></script>
-<script>
-</script>

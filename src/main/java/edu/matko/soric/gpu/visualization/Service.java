@@ -10,6 +10,7 @@ import java.util.List;
 public class Service {
 
     public Service () {
+        loadCSVdataToDatabase();
     }
 
     public void loadCSVdataToDatabase () {
