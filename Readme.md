@@ -24,4 +24,4 @@ http://www.kaggle.com/iliassekkaf/computerparts
 
 ## Screenshot
 
-![alt text](https://github.com/matkosoric/GPUdataviz/src/main/resources/screenshot.jpg)
+![alt text](https://github.com/matkosoric/GPUdataviz/blob/master/src/main/resources/screenshot.JPG)
