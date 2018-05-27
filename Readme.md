@@ -21,3 +21,7 @@ http://www.kaggle.com/iliassekkaf/computerparts
 * [Maven](https://maven.apache.org/) - Dependency Management
 * [D3](https://d3js.org/) - Javascript library for data visualization
 * [H2](http://www.h2database.com) - In-memory database
+
+## Screenshot
+
+![alt text](https://github.com/matkosoric/GPUdataviz/src/main/resources/screenshot.jpg)
