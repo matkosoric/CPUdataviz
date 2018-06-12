@@ -17,7 +17,7 @@ public class ReadData {
 
         // reading data set from a csv file and parsing elements to a bean
 
-        String data = "E:\\Java projekti\\CPUdataviz\\src\\main\\resources\\All_GPUs.csv";
+        String data = "src\\main\\resources\\All_GPUs.csv";
         //        String data = "/home/matko/IdeaProjects/CPUdataviz/src/main/resources/All_GPUs.csv";
         CSVReader reader = null;
         ArrayList<GPUbean> cpuList = new ArrayList<GPUbean>();
@@ -40,7 +40,6 @@ public class ReadData {
                 Long memory = 0L;
                 Long memory_speed = 0L;
                 Long tmu = 0L;
-
 
                 // parsiranje stringova u numeričke vrijednosti
                 try {
